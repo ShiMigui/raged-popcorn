@@ -1,0 +1,18 @@
+services:
+  app:
+    # image: php:8.4-fpm-alpine
+    build: ./app/
+    container_name: raged_app
+    volumes: [./app:/app:ro]
+    networks: [raged_network]
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: raged_proxy
+    volumes: [./docker/nginx.conf:/etc/nginx/nginx.conf:ro]
+    ports: [80:80]
+    networks: [raged_network]
+
+networks:
+  raged_network:
+    driver: bridge
