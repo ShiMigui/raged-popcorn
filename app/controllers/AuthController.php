@@ -5,13 +5,15 @@
  *
  * Handles requests such as login (/auth/signin), logout (/auth/signout), and registration (/auth/signup).
  */
-class AuthController
+class AuthController implements IController
 {
+	use TDynamicTitleController;
+
 	/**
 	 * Handles [GET] requests to /auth.
 	 */
 	public function main(): void
 	{
-		echo "<h1>AuthController</h1>";
+		$this->setPageTitle('Authentication');
 	}
 }

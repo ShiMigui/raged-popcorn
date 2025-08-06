@@ -24,6 +24,7 @@ switch ($route_info[0]) {
 	default:
 		json_response(500, 'Unknown routing error');
 	case FastRoute\Dispatcher::FOUND:
+		global $ctrl;
 		[$ctrl, $method] = load_controller($route_info[1]);
 		$ctrl->$method($route_info[2]);
 }

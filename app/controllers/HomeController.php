@@ -3,13 +3,18 @@
 /**
  * Controller responsible for the home page ("/" or "/home") of the application.
  */
-class HomeController
+class HomeController implements IController
 {
+	use TDynamicTitleController;
+
 	/**
 	 * Handles [GET] requests to the home page.
 	 */
 	public function main(): void
 	{
-		echo "<h1>HomeController</h1>";
+		$this->setPageTitle('Home');
+		require BASE_PATH . 'components/head.php';
+		require BASE_PATH . 'views/HomeView.php';
+		require BASE_PATH . 'components/foot.php';
 	}
 }

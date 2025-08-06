@@ -7,6 +7,8 @@ function load_controller(array $arg): array
 	if (!file_exists($file))
 		json_response(500, "Controller file '{$ctrl_name}.php' not found.");
 
+	require_once BASE_PATH . 'controllers/TDynamicTitleController.php';
+	require_once BASE_PATH . 'controllers/IController.php';
 	require_once $file;
 
 	if (!class_exists($ctrl_name))
